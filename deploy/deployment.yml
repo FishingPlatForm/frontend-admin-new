@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: admin
+      version: v1
+      tier: web
+  template:
+    metadata:
+      labels:
+        app: admin
+        version: v1
+        tier: web
+    spec:
+      serviceAccountName: admin
+      containers:
+        - args:
+            - npm
+            - start
+          image: registry-vpc.cn-hangzhou.aliyuncs.com/epicfish/admin:2e51857
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            exec:
+              command:
+                - curl
+                - http://127.0.0.1:3000
+            failureThreshold: 3
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 30
+          name: app
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+          readinessProbe:
+            exec:
+              command:
+                - curl
+                - http://127.0.0.1:3000
+            failureThreshold: 3
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 30
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 1000Mi
+            requests:
+              cpu: 300m
+              memory: 800Mi
