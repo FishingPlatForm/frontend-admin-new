@@ -113,8 +113,8 @@ export const MerchantWithdrawalListComponentColumns = (props, type, btnClick) =>
         },
         {
             title: '用户手机号',
-            dataIndex: 'Userid',
-            key: 'Userid',
+            dataIndex: 'Phone',
+            key: 'Phone',
         },
         {
             title: '提现申请时间',
@@ -123,17 +123,17 @@ export const MerchantWithdrawalListComponentColumns = (props, type, btnClick) =>
         },
         {
             title: '交易流水号',
-            dataIndex: 'PriceHour',
-            key: 'PriceHour',
-            render: (e, record) => {
-                return ""
-            }
+            dataIndex: 'Note',
+            key: 'Note',
         },
         {
             title: '当前账户余额',
             dataIndex: 'STimeEndTime',
             key: 'STimeEndTime',
             responsive: ['md'],
+            render:(e,record)=>{
+                return record.Money / 100
+            }   
         },
         {
             title: '本次提现金额',
