@@ -46,7 +46,6 @@ const MerchantWithdrawalListComponent = (props) => {
         }
     };
     const btnClick = async (type, record) => {
-        console.log(type,record)
         switch (type) {
             case "reject":
                 setIsModalOpen({ "status": 2,  "withdrawid": record.Withdrawid })
@@ -104,7 +103,6 @@ const MerchantWithdrawalListComponent = (props) => {
     useEffect(() => {
         fetchData();
     }, [JSON.stringify(tableParams)]);
-    console.log()
     return (
         <Row>
             <Col span={24}>

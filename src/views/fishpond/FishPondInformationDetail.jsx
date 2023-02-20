@@ -8,7 +8,6 @@ const style = {
 const color = ["#f50", "#2db7f5", "#87d068", "#108ee9", "purple", "geekblue", "blue", "cyan"]
 const FishPondInformationDetailComponent = (props) => {
     const data = props.location.state;
-    console.log(data)
     const btnClick = async (type) => {
         switch (type) {
             case "ok":

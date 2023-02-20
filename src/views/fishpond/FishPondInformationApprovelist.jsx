@@ -73,7 +73,6 @@ const FishPondInformationApprovelist = (props) => {
     useEffect(() => {
         fetchData();
     }, [JSON.stringify(tableParams)]);
-    console.log(data)
     return (
         <Table
             columns={FishPondInformationColumns(props, "approve", btnClick)}

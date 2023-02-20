@@ -38,7 +38,6 @@ const FishPondInformation = (props) => {
     useEffect(() => {
         fetchData();
     }, [JSON.stringify(tableParams)]);
-    console.log(data)
     return (
         <Table
             columns={FishPondInformationColumns(props,"all",btnClick)}
