@@ -15,7 +15,6 @@ const FishpondAnnouncement = () => {
         }
     }
     const onFinish = async (values) => {
-        console.log('Received values of form:', values);
         if (values) {
             let resDel = await updateAnnouncementAxios({ type: 0 });
             if (resDel.success) {
