@@ -2,7 +2,7 @@ import http from './axios';
 
 export function getAnnouncementAxios(params) {
     return new Promise((resolve, reject) => {
-        http("get", '/announcement/getAnnouncement',params).then(res => {
+        http("get", '/basic/announcement/getAnnouncement',params).then(res => {
             resolve(res);
         }, error => {
             reject(error)
@@ -11,7 +11,7 @@ export function getAnnouncementAxios(params) {
 }
 export function updateAnnouncementAxios(params) {
     return new Promise((resolve, reject) => {
-        http("get", '/announcement/updateAnnouncement',params).then(res => {
+        http("get", '/basic/announcement/updateAnnouncement',params).then(res => {
             resolve(res);
         }, error => {
             reject(error)
@@ -20,7 +20,7 @@ export function updateAnnouncementAxios(params) {
 }
 export function setAnnouncementAxios(params) {
     return new Promise((resolve, reject) => {
-        http("post", '/announcement/setAnnouncement',params).then(res => {
+        http("post", '/basic/announcement/setAnnouncement',params).then(res => {
             resolve(res);
         }, error => {
             reject(error)
