@@ -73,7 +73,18 @@ export const FishPondInformationColumns = (props, type, btnClick) => {
             fixed: 'right',
             render: (e, record) => {
                 if (record.Status != 1) {
-                    return "—"
+                    return (
+                        <Popconfirm
+                            placement="left"
+                            title={"是否强制下线"}
+                            description={"是否强制下线"}
+                            onConfirm={() => btnClick("reject", record)}
+                            okText="确定"
+                            cancelText="取消"
+                        >
+                            <Button>下架</Button>
+                        </Popconfirm>
+                    )
                 }
                 return (
                     <div style={{ display: "flex", alignItems: 'center' }}>
@@ -131,9 +142,9 @@ export const MerchantWithdrawalListComponentColumns = (props, type, btnClick) =>
             dataIndex: 'STimeEndTime',
             key: 'STimeEndTime',
             responsive: ['md'],
-            render:(e,record)=>{
+            render: (e, record) => {
                 return record.Money / 100
-            }   
+            }
         },
         {
             title: '本次提现金额',

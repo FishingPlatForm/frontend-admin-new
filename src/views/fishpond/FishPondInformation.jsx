@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Space, Table, Tag } from 'antd';
+import { Space, Table, message } from 'antd';
 
 import { FishPondInformationColumns } from "../../commons/tables";
-import { getFishpondListAxios } from "../../commons/request/fishpond";
+import { getFishpondListAxios,postAdminOffAxios } from "../../commons/request/fishpond";
 const FishPondInformation = (props) => {
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
@@ -33,7 +33,23 @@ const FishPondInformation = (props) => {
             setData([]);
         }
     };
-    const btnClick = (type)=>{
+    const btnClick = async(type,record)=>{
+        switch (type) {
+            case "reject":
+                let resReject = await postAdminOffAxios({
+                    "fishpondid": record.Fishpondid,
+                    "status": 0, // 0 下架  1 审批中 2 上架
+                })
+                if (resReject.success) {
+                    message.success(record.Name + "下架成功！");
+                    fetchData();
+                    return
+                }
+                message.error(record.Name + "下架失败！")
+        
+            default:
+                break;
+        }
     }
     useEffect(() => {
         fetchData();

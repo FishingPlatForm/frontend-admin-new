@@ -32,3 +32,13 @@ export function putApproveAxios(params) {
         })
     })
 }
+//管理员鱼塘下架
+export function postAdminOffAxios(params) {
+    return new Promise((resolve, reject) => {
+        http("post", '/fishpond/admin/off',params).then(res => {
+            resolve(res);
+        }, error => {
+            reject(error)
+        })
+    })
+}
