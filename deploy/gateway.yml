@@ -1,0 +1,45 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: admin-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "admin.epicfish.cn"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: admin
+spec:
+  gateways:
+  - admin-gateway
+  hosts:
+  - 'admin.epicfish.cn'
+  http:
+  - match:
+    - uri:
+        prefix: /
+    corsPolicy:
+      allowHeaders:
+      - Authorization
+      allowOrigins:
+      - regex: "http://.*.epicfish.cn|https://.*.epicfish.cn"
+      allowMethods:
+      - GET
+      - POST
+      - OPTIONS
+      - HEAD
+      - PUT
+      - DELETE
+    route:
+    - destination:
+        host: admin
+        port:
+          number: 3000
