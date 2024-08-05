@@ -21,7 +21,7 @@ spec:
         - args:
             - npm
             - start
-          image: registry-vpc.cn-hangzhou.aliyuncs.com/epicfish/admin:2e51857
+          image: registry-vpc.cn-hangzhou.aliyuncs.com/epicfish/admin:c8bb3f6
           imagePullPolicy: IfNotPresent
           livenessProbe:
             exec:
@@ -50,7 +50,7 @@ spec:
           resources:
             limits:
               cpu: 1000m
-              memory: 1000Mi
+              memory: 800Mi
             requests:
               cpu: 300m
-              memory: 800Mi
+              memory: 600Mi
