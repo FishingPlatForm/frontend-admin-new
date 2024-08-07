@@ -9,6 +9,7 @@ COPY . /app
 WORKDIR /app
 RUN npm install --legacy-peer-deps
 RUN npm install @craco/craco --save --legacy-peer-deps
+RUN yarn
 
 # RUN npm install -g serve
 ONBUILD ENTRYPOINT ["/app"]
